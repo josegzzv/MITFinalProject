@@ -1,0 +1,20 @@
+version: "3"
+
+services:
+  strapirestaurantapp:
+    image: strapi/strapi
+    container_name: strapirestaurantapp
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      DATABASE_URI: ${DATABASE_URI}
+    networks:
+      - strapi-app-network
+    volumes:
+      - ./app:/srv/app
+    ports:
+      - "1337:1337"
+
+networks:
+  strapi-app-network:
+    driver: bridge

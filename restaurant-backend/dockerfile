@@ -1,0 +1,14 @@
+# Establecer la imagen base a utilizar
+FROM strapi/strapi
+
+# Establecer el directorio de trabajo dentro del contenedor
+WORKDIR /srv/app
+
+# Copiar los archivos locales necesarios en el directorio actual al contenedor
+COPY ./app /srv/app
+
+# Exponer el puerto 1337 para acceder a Strapi externamente
+EXPOSE 1337
+
+# Comando para ejecutar al iniciar el contenedor
+CMD ["strapi", "develop"]
